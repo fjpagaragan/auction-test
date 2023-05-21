@@ -12,11 +12,12 @@ services:
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: auction
     networks:
-      grain_marketplace:
+      auction_test:
         ipv4_address: 172.11.0.3
 
   backend:
     container_name: backend
+    restart: always
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -28,11 +29,11 @@ services:
     ports:
       - "3030:3030"
     volumes:
-      - ./backend:/app
+      - .:/app
     env_file:
       - ./backend/env/local.env
     networks:
-      grain_marketplace:
+      auction_test:
         ipv4_address: 172.11.0.5
 
   # frontend:
@@ -49,7 +50,7 @@ services:
   #   volumes:
   #     - ./frontend:/app/frontend
   #   networks:
-  #     - grain_marketplace
+  #     - auction_test
 
   migration:
     container_name: migration
@@ -64,11 +65,11 @@ services:
     env_file:
       - ./backend/env/local.env
     networks:
-      grain_marketplace:
+      auction_test:
         ipv4_address: 172.11.0.6
 
 networks:
-  grain_marketplace:
+  auction_test:
     name: auction-test
     ipam:
       config:

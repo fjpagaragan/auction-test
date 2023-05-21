@@ -15,6 +15,7 @@ import responseLogger from "./middleware/responseLogger";
 import validateHeaders from "./middleware/validate-headers";
 import xRequestIdInjector from "./middleware/x-request-id";
 import { sequelizeTransactions } from "./middleware/sequelizeTransactions";
+import { UserRoutes } from "./user/user.route";
 
 // const swaggerDoc = swaggerJSDoc(swaggerOptions);
 
@@ -48,6 +49,8 @@ const routes: Array<CommonRoutesConfig> = [];
 const v1Router = express.Router();
 app.use(versionPrefix + "/", v1Router);
 logger.info(`Test - ${versionPrefix}`);
+
+routes.push(new UserRoutes(v1Router));
 
 v1Router.stack.forEach(function (r) {
   if (r.route && r.route.path) {

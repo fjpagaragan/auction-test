@@ -1,0 +1,75 @@
+# docker-compose.yml
+version: "3.3"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:14.4-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: auction
+    networks:
+      grain_marketplace:
+        ipv4_address: 172.11.0.3
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        ENV: local
+        PORT: 3030
+    depends_on:
+      - postgres
+    ports:
+      - "3030:3030"
+    volumes:
+      - ./backend:/app
+    env_file:
+      - ./backend/env/local.env
+    networks:
+      grain_marketplace:
+        ipv4_address: 172.11.0.5
+
+  # frontend:
+  #   container_name: frontend
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile-test
+  #     args:
+  #       ENV: local
+  #       # Note: Running frontend on 3001 since local dev environment runs on 3000
+  #       PORT: 3000
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/app/frontend
+  #   networks:
+  #     - grain_marketplace
+
+  migration:
+    container_name: migration
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    command: sh scripts/docker-compose-migration.sh postgres 5432
+    volumes:
+      - ./backend:/app
+    env_file:
+      - ./backend/env/local.env
+    networks:
+      grain_marketplace:
+        ipv4_address: 172.11.0.6
+
+networks:
+  grain_marketplace:
+    name: auction-test
+    ipam:
+      config:
+        - subnet: 172.11.0.0/24

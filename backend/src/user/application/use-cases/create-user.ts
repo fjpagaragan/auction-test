@@ -2,8 +2,6 @@ import { User } from "../../../user/domain/user";
 import { UserRepository } from "../../../user/domain/interfaces/repositories/user.repository";
 import bcrypt from "bcryptjs";
 
-
-
 export class CreateUser {
     userRepository: UserRepository;
 

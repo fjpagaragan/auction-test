@@ -33,8 +33,7 @@ module.exports = {
           updatedAt: {
             allowNull: false,
             type: Sequelize.DataTypes.DATE,
-          },
-    
+          },    
         },
         {transaction: t}))];
     });

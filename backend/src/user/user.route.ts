@@ -14,5 +14,9 @@ export class UserRoutes extends CommonRoutesConfig {
         this.router
             .route('/users')
             .post(validate(createUserValidator()), UserController.create);
+
+        this.router
+            .route('/authenticate')
+            .post(UserController.authenticate);
     }
 }

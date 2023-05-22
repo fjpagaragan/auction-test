@@ -8,9 +8,9 @@ export class UserRepositoryDB implements UserRepository {
         return await UserModel.create(user);
     }
 
-    async get(email: string, password: string): Promise<User | null> {
+    async get(email: string): Promise<User | null> {
         return await UserModel.findOne({
-            where: { email, password}
+            where: { email}
         }) 
     }
 }

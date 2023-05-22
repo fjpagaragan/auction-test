@@ -2,18 +2,18 @@ import { ItemRepository } from "../domain/interfaces/repositories/item.repositor
 import { Item } from "../domain/item";
 
 
-export class GetOngoingItems {
+export class GetItemById {
     itemRepository: ItemRepository;
 
     constructor (
-        itemRepository: ItemRepository
+        itemRepository: ItemRepository,
     ) {
         this.itemRepository = itemRepository;
     }
 
-    async execute(): Promise<Item[]> {
-        const data = await this.itemRepository.getAllOnGoing();
+    async execute(id: string): Promise<Item | null> {
+        const item = await this.itemRepository.getById(id);
 
-        return data;
+        return item;
     }
 }

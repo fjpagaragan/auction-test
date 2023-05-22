@@ -6,6 +6,8 @@ import {
     createItemValidator
 } from "./validators/create-item.validator";
 import { validate } from "../middleware/requestValidator";
+import { getItemsValidator } from "./validators/get-items.validator";
+import { getItemValidator } from "./validators/get-item.validator";
 
 
 export class ItemRoutes extends CommonRoutesConfig {
@@ -15,8 +17,12 @@ export class ItemRoutes extends CommonRoutesConfig {
 
     configureRoutes() {
         this.router
+            .route('/items/:id')
+            .get(auth, validate(getItemValidator()), ItemController.getById)
+
+        this.router
             .route('/items')
-            .get(auth, ItemController.getOngoing)
+            .get(auth, validate(getItemsValidator()), ItemController.getAll)
             .post(auth, validate(createItemValidator()), ItemController.create);
     }
 }

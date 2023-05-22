@@ -6,19 +6,25 @@ import { Sequelize } from "sequelize";
 
 
 export class ItemRepositoryDB implements ItemRepository {
+
     async create(item: Item): Promise<Item> {
         return await ItemModel.create(item);
     }
+
     async getById(id: string): Promise<Item | null> {
         return await ItemModel.findOne({
             where: { id }
         });
     }
-    async getAllOnGoing(): Promise<Item[]> {
+
+    async getAll(status: string): Promise<Item[]> {
+        console.log(status);
+        
+        const symbol = status === 'ongoing' ? '<' : '>=';
 
         return await ItemModel.findAll({
             where: Sequelize.literal(`(DATE_PART('day', NOW() - "createdAt") * 24 + 
-            DATE_PART('hour', NOW() - "createdAt")) < duration`)
+            DATE_PART('hour', NOW() - "createdAt")) ${symbol} duration`)
         })
     }
 

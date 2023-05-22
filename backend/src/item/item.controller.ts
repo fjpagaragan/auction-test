@@ -5,6 +5,7 @@ import { StatusCodes } from "http-status-codes";
 import { ItemRepositoryDB } from "./data-access/repository/item.repository.db";
 import { CreateItem } from "./application/create-item";
 import { JwtPayload } from "jsonwebtoken";
+import { GetOngoingItems } from "./application/get-ongoing-items";
 
 
 class ItemController {
@@ -36,6 +37,18 @@ class ItemController {
             res.status(StatusCodes.CREATED).json(item);
         } catch (error) {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+        }
+    }
+
+    public getOngoing = async (
+        req: Request,
+        res: Response,
+    ) => {
+        try {
+            const items = await new GetOngoingItems(this.itemRepository).execute();
+            res.status(StatusCodes.OK).json(items);
+        } catch (error) {
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);  
         }
     }
 }

@@ -16,6 +16,7 @@ export class ItemRoutes extends CommonRoutesConfig {
     configureRoutes() {
         this.router
             .route('/items')
+            .get(auth, ItemController.getOngoing)
             .post(auth, validate(createItemValidator()), ItemController.create);
     }
 }

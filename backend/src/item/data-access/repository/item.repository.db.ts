@@ -2,6 +2,7 @@ import { ItemAttributes } from "../../../item/domain/interfaces/item-attribute";
 import { Item } from "../../../item/domain/item";
 import { ItemRepository } from "../../../item/domain/interfaces/repositories/item.repository";
 import ItemModel from "../model/item.model";
+import { Sequelize } from "sequelize";
 
 
 export class ItemRepositoryDB implements ItemRepository {
@@ -13,9 +14,12 @@ export class ItemRepositoryDB implements ItemRepository {
             where: { id }
         });
     }
-    async get(): Promise<Item[]> {
-        return await ItemModel.findAll();
-        
+    async getAllOnGoing(): Promise<Item[]> {
+
+        return await ItemModel.findAll({
+            where: Sequelize.literal(`(DATE_PART('day', NOW() - "createdAt") * 24 + 
+            DATE_PART('hour', NOW() - "createdAt")) < duration`)
+        })
     }
 
 }

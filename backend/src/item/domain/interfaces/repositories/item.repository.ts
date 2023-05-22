@@ -4,5 +4,5 @@ import { Item } from "../../item";
 export interface ItemRepository {
     create(item: Item): Promise<Item>;
     getById(id: string): Promise<Item | null>;
-    get(): Promise<Item[]>;
+    getAllOnGoing(): Promise<Item[]>;
 }

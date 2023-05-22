@@ -3,6 +3,7 @@ import { CommonRoutesConfig } from "../common/config/common.routes.config";
 import UserController from "./user.controller";
 import { validate } from "../middleware/requestValidator";
 import { createUserValidator } from "./validators/create-user.validator";
+import { authenticateUserValidator } from "./validators/authenticate-user.validator";
 
 
 export class UserRoutes extends CommonRoutesConfig {
@@ -17,6 +18,6 @@ export class UserRoutes extends CommonRoutesConfig {
 
         this.router
             .route('/authenticate')
-            .post(UserController.authenticate);
+            .post(validate(authenticateUserValidator()), UserController.authenticate);
     }
 }

@@ -8,9 +8,9 @@ module.exports = {
     port: process.env.DB_PORT,
     dialect: 'postgres',
     logging: false,
-    clsNamespace: 'grain-marketplace',
+    clsNamespace: 'auction',
     migrationStorage: "sequelize",
     migrationStorageTableName: "SequelizeMigrations", // Default
     seederStorage: "sequelize",
-    seederStorageTableName: "SequelizeSeeders", // Default  
+    seederStorageTableName: "SequelizeSeeders",  
 }

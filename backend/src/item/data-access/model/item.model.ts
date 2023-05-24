@@ -1,4 +1,4 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, Sequelize } from "sequelize";
 import { Item } from "../../../item/domain/item";
 import { database } from "../../../common/config/database.config";
 import UserModel from "../../../user/data-access/model/user.model";
@@ -9,6 +9,7 @@ class ItemModel extends Model<Item> {
     public user_id!: string;
     public name!: string;
     public start_price!: number;
+    public current_price!: number;
     public duration!: number;
 }
 
@@ -34,6 +35,11 @@ ItemModel.init(
         start_price: {
             type: DataTypes.DECIMAL(17, 5),
             allowNull: false,
+        },
+        current_price: {
+            type: DataTypes.DECIMAL(17, 5),
+            allowNull: false,
+            defaultValue: Sequelize.col('start_price')
         },
         duration: {
             type: DataTypes.INTEGER(),

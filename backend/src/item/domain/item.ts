@@ -7,6 +7,7 @@ export class Item implements ItemAttributes {
     public user_id!: string;
     public name!: string;
     public start_price!: number;
+    public current_price!: number;
     public duration!: number;
 
     private constructor(item: ItemAttributes, id?: string, ) {
@@ -19,6 +20,7 @@ export class Item implements ItemAttributes {
         this.user_id = item.user_id;
         this.name = item.name;
         this.start_price = item.start_price;
+        this.current_price = item.current_price;
         this.duration = item.duration;
     }
 

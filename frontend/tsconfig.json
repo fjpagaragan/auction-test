@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": "src",
+    "declaration": false,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["../*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"],
+      "@components/*": ["common/components/*"],
+      "@store/*": ["common/store/*"],
+      "@hooks/*": ["common/hooks/*"],
+      "@types/*": ["common/types/*"],
+      "@utils/*": ["common/utils/*"],
+      "@widgets/*": ["common/widgets/*"],
+      "@*/response": ["modules/*/models/response"],
+      "@*/views": ["modules/*/models/views"],
+      "@*/transformers": ["modules/*/models/transformers"],
+      "@*/validations": ["modules/*/models/validations"],
+      "@*/actions": ["modules/*/store/actions"],
+      "@*/epics": ["modules/*/store/epics"],
+      "@*/reducers": ["modules/*/store/reducers"],
+      "@*": ["modules/*"]
+    },
+    "strictNullChecks": true,
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

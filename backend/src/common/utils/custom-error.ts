@@ -1,13 +1,13 @@
 class CustomError extends Error {
-    constructor(
-      public status: number,
-      public detail: string,
-      public errorTypeKey: ErrorTypeKeys,
-      public additionalErrorInfo?: Record<string, unknown>
-    ) {
-      super(detail)
-    }
+  constructor(
+    public status: number,
+    public detail: string,
+    public errorTypeKey: ErrorTypeKeys,
+    public additionalErrorInfo?: Record<string, unknown>
+  ) {
+    super(detail)
   }
+}
   export interface ErrorType {
     type: string
     title: string
@@ -19,6 +19,7 @@ class CustomError extends Error {
     SERVICE_UNAVAILABLE,
     FORBIDDEN,
     NOT_FOUND,
+    UNPROCESSABLE_ENTITY,
   }
   
   export default CustomError

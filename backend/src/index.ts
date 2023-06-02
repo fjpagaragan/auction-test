@@ -18,6 +18,7 @@ import { sequelizeTransactions } from "./middleware/sequelizeTransactions";
 import { UserRoutes } from "./user/user.route";
 import { ItemRoutes } from "./item/item.route";
 import { DepositRoutes } from "./deposit/deposit.route";
+import { BidRoutes } from "./bid/bid.route";
 
 // const swaggerDoc = swaggerJSDoc(swaggerOptions);
 
@@ -55,6 +56,7 @@ logger.info(`Test - ${versionPrefix}`);
 routes.push(new UserRoutes(v1Router));
 routes.push(new ItemRoutes(v1Router));
 routes.push(new DepositRoutes(v1Router));
+routes.push(new BidRoutes(v1Router));
 
 v1Router.stack.forEach(function (r) {
   if (r.route && r.route.path) {

@@ -2,7 +2,7 @@ import { Deposit } from "../domain/deposit";
 import { DepositRepository } from "../domain/interfaces/repositories/deposit.repository";
 
 
-export class CreateOrUpdateDeposit {
+export class AddDeposit {
     depositRepository: DepositRepository;
 
     constructor (
@@ -20,7 +20,6 @@ export class CreateOrUpdateDeposit {
             const newAmount = Number(deposit.amount) + Number(amount);
             
             const result = await this.depositRepository.update(user_id, newAmount);
-            console.log(result);
             
             return Deposit.Load(deposit.id, deposit.user_id, newAmount); 
         } else {

@@ -59,5 +59,9 @@ export const ErrorTypes: Record<ErrorTypeKeys, ErrorType> = {
     type: "not-found",
     title: "Not Found",
   },
+  [ErrorTypeKeys.UNPROCESSABLE_ENTITY]: {
+    type: "unprocessable-entity",
+    title: "Unprocessable Entity",
+  }
 };
 

@@ -33,6 +33,7 @@ class ItemController {
                 user_id: token.id,
                 name,
                 start_price,
+                current_price: start_price,
                 duration
             });
             res.status(StatusCodes.CREATED).json(item);

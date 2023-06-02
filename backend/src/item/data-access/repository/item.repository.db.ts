@@ -28,4 +28,14 @@ export class ItemRepositoryDB implements ItemRepository {
         })
     }
 
+    async updateCurrentPrice(id: string, price: number): Promise<boolean> {
+        const [count] = await ItemModel.update({ current_price: price }, {
+            where: {
+                id
+            }
+        });
+
+        return count > 0;
+    }
+
 }

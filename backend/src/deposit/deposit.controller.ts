@@ -6,7 +6,7 @@ import { GetUserDeposit } from "./application/get-user-deposit";
 import { StatusCodes } from "http-status-codes";
 import { Deposit } from "./domain/deposit";
 import { DepositRepositoryDB } from "./data-access/repository/deposit.repository.db";
-import { CreateOrUpdateDeposit } from "./application/create-or-update-deposit";
+import { AddDeposit } from "./application/add-deposit";
 
 
 class DepositController {
@@ -42,7 +42,7 @@ class DepositController {
             const token: JwtPayload = await decodeToken(req.header('Authorization')!) as JwtPayload;
             const amount = req.body.amount;
 
-            const deposit = await new CreateOrUpdateDeposit(this.depositRepository).execute(token.id, amount);
+            const deposit = await new AddDeposit(this.depositRepository).execute(token.id, amount);
 
             res.status(StatusCodes.OK).json(deposit);
         } catch (error) {

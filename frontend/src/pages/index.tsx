@@ -1,14 +1,11 @@
 import { NextPage } from "next";
-import { Box, Heading } from "@chakra-ui/react";
+import Login from "@login/components/Login";
+import { Flex } from "@chakra-ui/react";
 
 
 const Page: NextPage = () => {
     
-    return (
-        <Box p={4}>
-            <Heading as="h1" size="xl">
-                Welcome
-            </Heading>
-        </Box>
-    )
+    return <Login />
 }
+
+export default Page;

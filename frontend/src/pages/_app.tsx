@@ -14,7 +14,8 @@ const MyApp = ({
 
     useEffect(() => {
         if(!isAuthenticated()) {
-            router.push("/login");
+            // router.push("/login");
+            console.log("Hello");   
         }
     }, []);
 

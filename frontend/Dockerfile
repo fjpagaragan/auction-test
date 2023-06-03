@@ -12,7 +12,8 @@ EXPOSE 3000
 ENV PORT 3000
 ENV NEXT_TELEMETRY_DISABLED 1
 
+RUN npm install -g concurrently 
 RUN npx tailwindcss -i ./src/styles/tailwind_input.css o ./src/styles/style.css
 RUN npx next build
 
-CMD npx next start
+CMD npm run next:dev

@@ -1,5 +1,8 @@
 import { FC, useState } from "react";
 
+import { isUndefined } from "lodash";
+import { useFormik } from "formik";
+
 import { 
     Button, 
     Card, 
@@ -20,8 +23,6 @@ import {
 
 import { loginValidationSchema } from "@login/validations";
 import { LoginFormProps, loginFormInitialValues } from "@login/views";
-import { useFormik } from "formik";
-import { isUndefined } from "lodash";
 
 
 
@@ -46,10 +47,9 @@ const Login: FC = () => {
         onSubmit: values => {submitHandler(values)}});
     const submitHandler = (values: LoginFormProps): void => {
         console.log(values);
-        
         console.log(form.errors);
-
     };
+    
     return (
         <form onSubmit={form.handleSubmit}>
         <Flex height="100vh" alignItems="center" justifyContent="center">

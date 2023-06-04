@@ -11,6 +11,8 @@ import { combineEpics, createEpicMiddleware } from "redux-observable";
 
 // import { alertReducer } from "@alert/reducers";
 import { epicList } from "@store/epics";
+import { authenticateUserReducer } from "@login/reducers";
+import { alertReducer } from "@alert/store/reducer";
 // import { userReducer } from "@user/reducers";
 
 interface ReducerManager {
@@ -24,8 +26,8 @@ interface Store extends ReduxStore {
 }
 
 const globalReducers = {
-//   alert: alertReducer,
-//   user: userReducer,
+  alert: alertReducer,
+  user: authenticateUserReducer,
 };
 
 export const createReducerManager = (initialReducers): ReducerManager => {

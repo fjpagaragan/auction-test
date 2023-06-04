@@ -1,4 +1,5 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { isUndefined } from "lodash";
 import { useFormik } from "formik";
@@ -21,15 +22,27 @@ import {
     Text 
 } from "@chakra-ui/react";
 
-import { loginValidationSchema } from "@login/validations";
+import { loginValidationSchema, registerValidationSchema } from "@login/validations";
 import { LoginFormProps, loginFormInitialValues } from "@login/views";
-
+import { CreateUser } from "@login/actions";
+import { selectCreateUser } from "@login/epics";
+import { createUserReducer } from "@login/reducers";
+import { useReducer } from "@hooks/useReducer";
+import { ApiErrorStatus } from "@utils/api/api-response";
+import { SetAlert } from "@alert/actions";
+import { DEFAULT_TIMEOUT } from "@alert/utils/constants";
 
 
 const Login: FC = () => {
 
+    const dispatch = useDispatch();
+
+    const createUserState = useSelector(selectCreateUser);
+
     const [isRegister, setIsRegister] = useState<boolean>(false);
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
+
+    useReducer("createUser", createUserReducer);
     
     const isShowPasswordHandler = () => {
         setIsShowPassword(!isShowPassword);
@@ -40,16 +53,64 @@ const Login: FC = () => {
         form.resetForm();
     };
 
-
     const form = useFormik({
         initialValues: loginFormInitialValues, 
-        validationSchema: loginValidationSchema, 
+        validationSchema: !isRegister ? loginValidationSchema : registerValidationSchema, 
         onSubmit: values => {submitHandler(values)}});
+
     const submitHandler = (values: LoginFormProps): void => {
-        console.log(values);
-        console.log(form.errors);
+        if (!isRegister) {
+
+        } else {
+            submitCreateUserHandler(values);
+        }
     };
     
+    const submitCreateUserHandler = (values: LoginFormProps): void => {
+        dispatch(CreateUser({ user: values}));
+    }
+
+    useEffect(() => {
+        const createUser = createUserState?.createUser;
+        console.log("Hello");
+        
+        if (!isUndefined(createUser?.success)) {
+            const alerDetails = {
+                status: "success",
+                message: `Successfuly created user [${createUser?.success.email}]. You can now log in.`,
+                timeout: DEFAULT_TIMEOUT,
+            }
+            dispatch(SetAlert(alerDetails));
+            form.resetForm();
+        } else if (createUser?.error) {
+            let errorAlertDetails;
+            switch (createUser.error.response.status) {
+                case ApiErrorStatus.BAD_REQUEST:
+                    errorAlertDetails = {
+                        status: "error",
+                        message: createUser.error.response.detail,
+                        timeout: DEFAULT_TIMEOUT,
+                    };                    
+                    break;
+                
+                case ApiErrorStatus.INTERNAL_SERVER_ERROR:
+                    errorAlertDetails = {
+                        status: "error",
+                        message: createUser.error.response.error,
+                        timeout: DEFAULT_TIMEOUT,
+                    };                    
+                    break;  
+                default:
+                    break;
+            }
+            
+            if (!isUndefined(errorAlertDetails)) {
+                form.setSubmitting(false);
+                dispatch(SetAlert(errorAlertDetails));
+            }
+        }
+    }, [createUserState]);
+
     return (
         <form onSubmit={form.handleSubmit}>
         <Flex height="100vh" alignItems="center" justifyContent="center">

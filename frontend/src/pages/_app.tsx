@@ -34,7 +34,7 @@ const MyApp = ({
                 <AlertComponent />
                 <CSSReset />
                 {showSidebarAndHeader && <NavBar />}
-                <Box maxW="container.lg" mx="auto" p={4}>
+                <Box maxW="container.xl" mx="auto" p={4}>
                 <Component {...pageProps} />
                 </Box>
             </Provider>

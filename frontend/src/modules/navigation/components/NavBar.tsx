@@ -20,7 +20,7 @@ const NavBar: FC = () => {
     const { onOpen } = useDisclosure();
 
     return (
-      <Box as="section" pb={{ base: '12', md: '24' }}>
+      <Box as="section" pb={{ base: '12', md: '15' }}>
         <Box as="nav" bg="bg-surface" boxShadow="sm">
             <IconButton
                 display={{ base: 'flex', md: 'none' }}

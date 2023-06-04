@@ -52,13 +52,7 @@ class UserController {
                 res.status(StatusCodes.NOT_FOUND).json({"message": "User not found!"});
             }
         } catch (error) {
-            if (error instanceof UserNotFoundError) {
-                res.status(StatusCodes.NOT_FOUND).json(error);
-            } else if (error instanceof PasswordNotMatch) {
-                res.status(StatusCodes.BAD_REQUEST).json(error);
-            } else {
-                res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
-            }
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
         }
     }
 }

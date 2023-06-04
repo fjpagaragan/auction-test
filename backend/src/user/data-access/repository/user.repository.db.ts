@@ -17,7 +17,7 @@ export class UserRepositoryDB implements UserRepository {
 
     async get(email: string): Promise<User | null> {
         return await UserModel.findOne({
-            where: { email}
+            where: { email }
         }) 
     }
 }

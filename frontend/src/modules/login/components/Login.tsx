@@ -24,9 +24,9 @@ import {
 
 import { loginValidationSchema, registerValidationSchema } from "@login/validations";
 import { LoginFormProps, loginFormInitialValues } from "@login/views";
-import { CreateUser } from "@login/actions";
-import { selectCreateUser } from "@login/epics";
-import { createUserReducer } from "@login/reducers";
+import { AuthenticateUser, CreateUser } from "@login/actions";
+import { selectAuthenticateUser, selectCreateUser } from "@login/epics";
+import { authenticateUserReducer, createUserReducer } from "@login/reducers";
 import { useReducer } from "@hooks/useReducer";
 import { ApiErrorStatus } from "@utils/api/api-response";
 import { SetAlert } from "@alert/actions";
@@ -38,11 +38,13 @@ const Login: FC = () => {
     const dispatch = useDispatch();
 
     const createUserState = useSelector(selectCreateUser);
+    const authenticateUserState = useSelector(selectAuthenticateUser);
 
     const [isRegister, setIsRegister] = useState<boolean>(false);
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
     useReducer("createUser", createUserReducer);
+    useReducer("authenticateUser", authenticateUserReducer);
     
     const isShowPasswordHandler = () => {
         setIsShowPassword(!isShowPassword);
@@ -60,7 +62,7 @@ const Login: FC = () => {
 
     const submitHandler = (values: LoginFormProps): void => {
         if (!isRegister) {
-
+            submiteAuthenticateUserHandler(values);
         } else {
             submitCreateUserHandler(values);
         }
@@ -70,9 +72,12 @@ const Login: FC = () => {
         dispatch(CreateUser({ user: values}));
     }
 
+    const submiteAuthenticateUserHandler = (values: LoginFormProps): void => {
+        dispatch(AuthenticateUser({ user: values}));
+    }
+
     useEffect(() => {
         const createUser = createUserState?.createUser;
-        console.log("Hello");
         
         if (!isUndefined(createUser?.success)) {
             const alerDetails = {
@@ -110,6 +115,45 @@ const Login: FC = () => {
             }
         }
     }, [createUserState]);
+
+    useEffect(() => {
+        const authenticateUser = authenticateUserState?.authenicateUser;
+        if (!isUndefined(authenticateUser?.success)) {
+            const alerDetails = {
+                status: "info",
+                message: `Redirecting...`,
+                timeout: DEFAULT_TIMEOUT,
+            }
+            dispatch(SetAlert(alerDetails));
+            form.resetForm();
+        } else if (authenticateUser?.error) {
+            let errorAlertDetails;
+            switch (authenticateUser.error.response.status) {
+                case ApiErrorStatus.BAD_REQUEST:
+                    errorAlertDetails = {
+                        status: "error",
+                        message: authenticateUser.error.response.detail,
+                        timeout: DEFAULT_TIMEOUT,
+                    };                    
+                    break;
+                
+                case ApiErrorStatus.INTERNAL_SERVER_ERROR:
+                    errorAlertDetails = {
+                        status: "error",
+                        message: authenticateUser.error.response.error,
+                        timeout: DEFAULT_TIMEOUT,
+                    };                    
+                    break;  
+                default:
+                    break;
+            }
+            
+            if (!isUndefined(errorAlertDetails)) {
+                form.setSubmitting(false);
+                dispatch(SetAlert(errorAlertDetails));
+            }
+        }
+    }, [authenticateUserState]);
 
     return (
         <form onSubmit={form.handleSubmit}>

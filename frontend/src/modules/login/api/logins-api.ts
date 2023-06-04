@@ -30,8 +30,11 @@ export const authUser = (
     const url = AUTHENTICATE_API;
     const body = { ...params.user };
 
-    return ajaxPost<AuthenticateUserResponse>({ url }, { ...body })
-        .pipe(
-            map(({response}) => response),
-        );
+    return ajax({
+        method: "POST",
+        url,
+        body
+    }).pipe(
+        map(({response}) => response as AuthenticateUserResponse)
+    )
 }

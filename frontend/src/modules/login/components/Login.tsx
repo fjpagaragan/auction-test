@@ -32,6 +32,7 @@ import { ApiErrorStatus } from "@utils/api/api-response";
 import { SetAlert } from "@alert/actions";
 import { DEFAULT_TIMEOUT } from "@alert/utils/constants";
 import Cookies from "js-cookie";
+import router from "next/router";
 
 
 const Login: FC = () => {
@@ -128,6 +129,7 @@ const Login: FC = () => {
             dispatch(SetAlert(alerDetails));
             if (authenticateUser?.success.token) {
                 Cookies.set('token', authenticateUser.success.token, { expires: 7});
+                router.push("/");
             }
             form.resetForm();
         } else if (authenticateUser?.error) {

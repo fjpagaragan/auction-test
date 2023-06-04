@@ -6,8 +6,7 @@ import { useRouter } from "next/router";
 import { isAuthenticated } from "@utils/auth";
 import { wrapper } from "@store/index";
 import AlertComponent from "@alert/components/Alert";
-import NavBar from "@navigation/components/Navbar";
-import Sidebar from "@navigation/components/Sidebar";
+import NavBar from "@navigation/components/NavBar";
 
 
 
@@ -19,32 +18,25 @@ const MyApp = ({
 }: AppProps): ReactElement => {
     const router = useRouter();
     const { store } = wrapper.useWrappedStore(props);
-
-    const renderAuthenticatedLayout = () => {
-        return (
-            <>
-                <Sidebar children={<Component {...pageProps} />} />
-            </>
-          );
-    };
-
-    const renderUnAuthenticatedLayoute = () => {
-        return <Component {...pageProps} />
-    }
+    const showSidebarAndHeader = router.pathname !== "/auth"; 
 
     useEffect(() => {
         if(!isAuthenticated()) {
-            // router.push("/login");
-            console.log("Hello");   
+            router.push("/auth"); 
+        } else {
+            router.push("/")
         }
-    }, []);
+    }, [isAuthenticated]);
 
     return (
         <ChakraProvider>
             <Provider store={store}>
                 <AlertComponent />
                 <CSSReset />
-                {isAuthenticated() ? renderAuthenticatedLayout() : renderUnAuthenticatedLayoute()}
+                {showSidebarAndHeader && <NavBar />}
+                <Box maxW="container.lg" mx="auto" p={4}>
+                <Component {...pageProps} />
+                </Box>
             </Provider>
         </ChakraProvider>
     )

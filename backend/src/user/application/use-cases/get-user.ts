@@ -20,9 +20,8 @@ export class GetUser {
         if (!user) {
             throw new CustomError(StatusCodes.BAD_REQUEST, "Invalid username / password.", ErrorTypeKeys.BAD_REQUEST);
         }
-        const hashPassword = await bcrypt.hash(user.password, 8);
-        const match = await bcrypt.compare(hashPassword, password);
-
+        const match = await bcrypt.compare(password, user.password);
+        
         if (!match) {
             throw new CustomError(StatusCodes.BAD_REQUEST, "Invalid username / password.", ErrorTypeKeys.BAD_REQUEST);
         }

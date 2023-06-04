@@ -7,7 +7,7 @@ export const API_BASE_URL =
   getPublicRuntimeConfig("NEXT_PUBLIC_API_BASE_URL") ??
   "http://localhost:3030/v1";
 
-export const AUTH_SESSION_URL = "/auth/cookies";
+export const AUTH_SESSION_URL = "/cookies";
 export const FRONT_END_INTEGRATION_API_IRL = `${APP_DOMAIN}/api`;
 
 

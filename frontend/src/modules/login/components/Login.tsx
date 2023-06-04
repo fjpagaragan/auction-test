@@ -31,6 +31,7 @@ import { useReducer } from "@hooks/useReducer";
 import { ApiErrorStatus } from "@utils/api/api-response";
 import { SetAlert } from "@alert/actions";
 import { DEFAULT_TIMEOUT } from "@alert/utils/constants";
+import Cookies from "js-cookie";
 
 
 const Login: FC = () => {
@@ -125,6 +126,9 @@ const Login: FC = () => {
                 timeout: DEFAULT_TIMEOUT,
             }
             dispatch(SetAlert(alerDetails));
+            if (authenticateUser?.success.token) {
+                Cookies.set('token', authenticateUser.success.token, { expires: 7});
+            }
             form.resetForm();
         } else if (authenticateUser?.error) {
             let errorAlertDetails;

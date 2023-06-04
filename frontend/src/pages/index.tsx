@@ -1,11 +1,10 @@
 import { NextPage } from "next";
-import Login from "@login/components/Login";
-import { Flex } from "@chakra-ui/react";
+import Item from "@item/components/Item";
 
 
 const Page: NextPage = () => {
     
-    return <Login />
+    return <Item />
 }
 
 export default Page;

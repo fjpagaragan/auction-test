@@ -1,28 +1,43 @@
 import { AppProps } from "next/app"
 import { ReactElement, useEffect } from "react"
-import { ChakraProvider, CSSReset } from "@chakra-ui/react";
+import { Provider } from "react-redux";
+import { Box, ChakraProvider, Container, CSSReset, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { isAuthenticated } from "@utils/auth";
+import { wrapper } from "@store/index";
+import AlertComponent from "@alert/components/Alert";
+import NavBar from "@navigation/components/NavBar";
+
 
 
 
 const MyApp = ({
     Component,
-    pageProps
+    pageProps,
+    ...props
 }: AppProps): ReactElement => {
     const router = useRouter();
+    const { store } = wrapper.useWrappedStore(props);
+    const showSidebarAndHeader = router.pathname !== "/auth"; 
 
     useEffect(() => {
         if(!isAuthenticated()) {
-            // router.push("/login");
-            console.log("Hello");   
+            router.push("/auth"); 
+        } else {
+            router.push("/")
         }
-    }, []);
+    }, [isAuthenticated]);
 
     return (
         <ChakraProvider>
-            <CSSReset />
-            <Component {...pageProps} />
+            <Provider store={store}>
+                <AlertComponent />
+                <CSSReset />
+                {showSidebarAndHeader && <NavBar />}
+                <Box maxW="container.lg" mx="auto" p={4}>
+                <Component {...pageProps} />
+                </Box>
+            </Provider>
         </ChakraProvider>
     )
 }

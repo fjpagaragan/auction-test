@@ -25,6 +25,7 @@ import { Item } from "@item/views";
 import { ItemCompletedColumns, ItemOngoingColumns } from "@item/utils/header-columns";
 import { GetItems } from "@item/actions";
 import CreateItemModal from "./CreateItemModal";
+import CreateDepositDrawer from "@deposit/components/MakeDepositDrawer";
 
 
 
@@ -40,6 +41,7 @@ const Item: FC = () => {
     const [itemStatus, setItemStatus] = useState("ongoing");
 
     const [isOpenItemDrawer, setIsOpenItemDrawer] = useState(false);
+    const [isOpenDepositDrawer, setIsOpenDepositDrawer] = useState(false);
 
 
     useReducer("getItems", itemsReducer);
@@ -55,6 +57,10 @@ const Item: FC = () => {
 
     const toggleItemModal = () => {
         setIsOpenItemDrawer(!isOpenItemDrawer);
+    }
+
+    const toggleDepositDrawer = () => {
+        setIsOpenDepositDrawer(!isOpenDepositDrawer);
     }
 
     useEffect(() => {
@@ -105,7 +111,11 @@ const Item: FC = () => {
                         isOpenItemDrawer={isOpenItemDrawer} 
                         setIsOpenItemDrawer={setIsOpenItemDrawer}            
                     />
-                    <Button colorScheme="teal" variant={"outline"}>Make Desposit</Button>
+                    <Button onClick={toggleDepositDrawer} colorScheme="teal" variant={"outline"}>Make Desposit</Button>
+                    <CreateDepositDrawer 
+                        isOpenDepositDrawer={isOpenDepositDrawer} 
+                        setIsOpenDepositDrawer={setIsOpenDepositDrawer}                    
+                    />
                 </HStack>
                 <Tabs variant='soft-rounded' colorScheme='green'>
                     <TabList>

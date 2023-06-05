@@ -3,20 +3,28 @@ import { DepositApiResponse } from "@deposit/response";
 import { AjaxStateObject } from "@utils/ajax-util";
 import { 
     CLEAR_DEPOSIT,
-    DepositAction, 
+    GetDepositActions, 
     GET_DEPOSIT, 
     GET_DEPOSIT_FAIL, 
-    GET_DEPOSIT_SUCCESS 
+    GET_DEPOSIT_SUCCESS, 
+    MakeDepositActions,
+    MAKE_DEPOSIT,
+    MAKE_DEPOSIT_SUCCESS,
+    MAKE_DEPOSIT_FAIL
 } from "@deposit/actions";
 
 
-export interface DepositState {
+export interface GetDepositState {
     deposit?: AjaxStateObject<DepositApiResponse>;
 };
 
+export interface MakeDepositState {
+    makeDeposit?: AjaxStateObject<DepositApiResponse>;
+}
+
 export const depositReducer: Reducer<
-    DepositState,
-    DepositAction
+    GetDepositState,
+    GetDepositActions
 > = (
     state = {},
     action
@@ -50,6 +58,45 @@ export const depositReducer: Reducer<
 
         case CLEAR_DEPOSIT:
             return {};
+    
+        default:
+            return state;
+    }
+}
+
+export const makeDepositReducer: Reducer<
+    MakeDepositState,
+    MakeDepositActions
+> = (
+    state = {},
+    action
+) => {
+    switch (action.type) {
+        case MAKE_DEPOSIT:
+            return {
+                ...state,
+                makeDeposit: {
+                    loading: true,
+                }
+            };
+
+        case MAKE_DEPOSIT_SUCCESS:
+            return {
+                ...state,
+                makeDeposit: {
+                    loading: false,
+                    success: action.payload,
+                }
+            };
+
+        case MAKE_DEPOSIT_FAIL:
+            return {
+                ...state,
+                makeDeposit: {
+                    loading: false,
+                    error: action.payload,
+                }
+            }
     
         default:
             return state;

@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npx eslint . --ext .js,.jsx,.ts,.tsx",
     "build": "tsc",
     "prestart": "npm run build",
@@ -18,7 +17,12 @@
     "seed:down": "docker exec -it backend npx sequelize-cli db:seed:undo:all",
     "migrate:seed:up": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
-    "docker:local": "docker compose -f ../docker-compose.yml up -d"
+    "docker:local": "docker compose -f ../docker-compose.yml up -d",
+    "test": "npm run test:unit && npm run test:endpoint",
+    "test:unit": "jest \"test/unit/.*\\.test\\.ts\"",
+    "test:endpoint": "jest \"test/endpoint/.*\\.test\\.ts\"",
+    "test:e2e": "jest \"test/e2e/.*\\.test\\.ts\"",
+    "test:coverage": "jest --coverage --coverageReporters=\"text-summary\""
   },
   "keywords": [],
   "author": "",
@@ -55,6 +59,7 @@
     "@types/cors": "2.8.12",
     "@types/express": "4.17.13",
     "@types/http-errors": "1.8.2",
+    "@types/jest": "27.5.2",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/lodash": "^4.14.191",
     "@types/morgan": "1.9.3",
@@ -72,15 +77,22 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.0.1",
+    "jest": "27.4.7",
+    "jest-extended": "3.1.0",
+    "jest-mock-extended": "3.0.1",
+    "jest-openapi": "0.14.2",
     "node-mocks-http": "^1.11.0",
     "nodemon": "2.0.16",
     "nyc": "15.1.0",
     "prettier": "2.6.2",
+    "supertest": "6.2.2",
+    "ts-jest": "27.1.5",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.8.4"
   },
   "eslintIgnore": [
-    "src/common/config/database.config.ts"
+    "src/common/config/database.config.ts",
+    "test/**/*"
   ]
 }

@@ -27,5 +27,5 @@
       "@typescript-eslint/restrict-plus-operands": 0,
       "@typescript-eslint/unbound-method": 0
     },
-    "ignorePatterns": ["migrations/**/*.js", "seeders/**/*.js", "node_modules/**"]
+    "ignorePatterns": ["migrations/**/*.js", "seeders/**/*.js", "test/**", "node_modules/**"]
   }

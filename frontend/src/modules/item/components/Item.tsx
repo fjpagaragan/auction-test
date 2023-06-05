@@ -39,7 +39,7 @@ const Item: FC = () => {
     const [pending, setPending] = useState(true);
     const [itemStatus, setItemStatus] = useState("ongoing");
 
-    const [isOpenItemModal, setIsOpenItemModal] = useState(false);
+    const [isOpenItemDrawer, setIsOpenItemDrawer] = useState(false);
 
 
     useReducer("getItems", itemsReducer);
@@ -54,7 +54,7 @@ const Item: FC = () => {
     }
 
     const toggleItemModal = () => {
-        setIsOpenItemModal(!isOpenItemModal);
+        setIsOpenItemDrawer(!isOpenItemDrawer);
     }
 
     useEffect(() => {
@@ -102,8 +102,8 @@ const Item: FC = () => {
                 <HStack justifyContent={{ base: 'space-between', md: 'flex-end' }}>
                     <Button onClick={toggleItemModal} colorScheme="teal">Create Item</Button>
                     <CreateItemModal 
-                        isOpenItemModal={isOpenItemModal} 
-                        onToggleItemModal={toggleItemModal}            
+                        isOpenItemDrawer={isOpenItemDrawer} 
+                        setIsOpenItemDrawer={setIsOpenItemDrawer}            
                     />
                     <Button colorScheme="teal" variant={"outline"}>Make Desposit</Button>
                 </HStack>

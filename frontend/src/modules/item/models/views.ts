@@ -16,12 +16,12 @@ export type ItemTableRow = {
 
 export interface CreateItemFormProps {
     name: string;
-    start_price: number | null;
-    duration: number | null;
+    start_price: number;
+    duration: number;
 }
 
 export const createItemFormInitialValues: CreateItemFormProps = {
     name: "",
-    start_price: null,
-    duration: null,
+    start_price: 0,
+    duration: 0,
 }

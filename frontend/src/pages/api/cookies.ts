@@ -1,16 +1,17 @@
-import Cookies from "js-cookie";
+import cookie from "cookie"
 import type { NextApiHandler } from "next";
 
 const session: NextApiHandler = async (req, res) => {
-    const token = Cookies.get("token");
+    const parsed = cookie.parse(req.headers.cookie ?? "");
 
-    if (token) {
+    if (parsed.token) {
         res.status(200).json({
-            token
+            token: parsed.token
         });
     } else {
-        res.status(401).json({ message: "Unauthorized" });
+        res.status(401).json({ message: "Unauthorized Test" + parsed.token });
     }
+    
 };
 
 export default session;

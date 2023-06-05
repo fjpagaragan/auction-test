@@ -15,12 +15,13 @@ import {
     useDisclosure,
  } from '@chakra-ui/react'
 import { FiMenu, FiBell } from 'react-icons/fi'
+import Deposit from '@deposit/components/Deposit';
   
 const NavBar: FC = () => {
     const { onOpen } = useDisclosure();
 
     return (
-      <Box as="section" pb={{ base: '12', md: '24' }}>
+      <Box as="section" pb={{ base: '12', md: '15' }}>
         <Box as="nav" bg="bg-surface" boxShadow="sm">
             <IconButton
                 display={{ base: 'flex', md: 'none' }}
@@ -58,8 +59,9 @@ const NavBar: FC = () => {
                         <MenuList
                         bg={useColorModeValue('white', 'gray.900')}
                         borderColor={useColorModeValue('gray.200', 'gray.700')}>
-                        <MenuItem>Create New Item</MenuItem>
-                        <MenuItem>Deposit</MenuItem>
+                        <MenuItem>
+                          <Deposit />
+                        </MenuItem>
                         <MenuDivider />
                         <MenuItem>Sign out</MenuItem>
                         </MenuList>

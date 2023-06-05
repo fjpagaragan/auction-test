@@ -13,3 +13,5 @@ export const FRONT_END_INTEGRATION_API_IRL = `${APP_DOMAIN}/api`;
 
 export const AUTHENTICATE_API = `${API_BASE_URL}/authenticate`;
 export const USER_API = `${API_BASE_URL}/users`;
+export const ITEM_API = `${API_BASE_URL}/items`;
+export const DEPOSIT_API = `${API_BASE_URL}/deposits`

@@ -547,10 +547,6 @@ video {
   }
 }
 
-.flex {
-  display: flex;
-}
-
 .h-full {
   height: 100%;
 }

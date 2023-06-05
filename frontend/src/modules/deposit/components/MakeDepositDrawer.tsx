@@ -116,7 +116,7 @@ const CreateDepositDrawer: FC<CreateDepositDrawerProps> = ({
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerCloseButton />
-                    <DrawerHeader>Create Item</DrawerHeader>
+                    <DrawerHeader>Add Deposit</DrawerHeader>
 
                     <DrawerBody>
                         <FormControl isInvalid={!isUndefined(form.errors.amount)}>

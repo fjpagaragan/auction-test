@@ -4,6 +4,7 @@ import { authenticateUserEpic, createUserEpic } from "@login/epics";
 import { resetAlertEpic, setAlertEpic } from "@alert/store/epic";
 import { createItemEpic, getItemsEpic } from "@item/epics";
 import { getDepositEpic, makeDepositEpic } from "@deposit/store/epic";
+import { makeBidEpic } from "@bid/store/epic";
 
 
 export const epicList: Epic[] = [
@@ -17,6 +18,8 @@ export const epicList: Epic[] = [
 
     getDepositEpic,
     makeDepositEpic,
+
+    makeBidEpic,
 
     createUserEpic,
     authenticateUserEpic

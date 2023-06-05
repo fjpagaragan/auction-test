@@ -26,6 +26,7 @@ import { ItemCompletedColumns, ItemOngoingColumns } from "@item/utils/header-col
 import { GetItems } from "@item/actions";
 import CreateItemModal from "./CreateItemModal";
 import CreateDepositDrawer from "@deposit/components/MakeDepositDrawer";
+import MakeBidDrawer from "@bid/components/MakeBidDrawer";
 
 
 
@@ -42,12 +43,15 @@ const Item: FC = () => {
 
     const [isOpenItemDrawer, setIsOpenItemDrawer] = useState(false);
     const [isOpenDepositDrawer, setIsOpenDepositDrawer] = useState(false);
+    const [isOpenBidDrawer, setIsOpenBidDrawer] = useState(false);
+    const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
 
     useReducer("getItems", itemsReducer);
 
     const onBidHandler = (item: Item) => {
-        console.log(item);
+        setSelectedItem(item);
+        setIsOpenBidDrawer(!isOpenBidDrawer);
     };
 
     const changeTableHandler = (status: string) => {
@@ -105,6 +109,12 @@ const Item: FC = () => {
 
     return (
         <>
+                <MakeBidDrawer 
+                    isOpenBidDrawer={isOpenBidDrawer} 
+                    setIsOpenBidDrawer={setIsOpenBidDrawer} 
+                    item={selectedItem} 
+                    setSelectedItem={setSelectedItem}                
+                />
                 <HStack justifyContent={{ base: 'space-between', md: 'flex-end' }}>
                     <Button onClick={toggleItemModal} colorScheme="teal">Create Item</Button>
                     <CreateItemModal 

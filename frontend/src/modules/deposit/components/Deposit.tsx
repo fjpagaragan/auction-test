@@ -22,9 +22,10 @@ const Deposit: FC = () => {
 
     return (
         <>
-            <Text as='b'>Balance: { deposit && deposit.amount 
-                                    ? Number(deposit.amount).toFixed(2) 
-                                    : 0.00} $
+            <Text as='b'>
+                Balance: { deposit && deposit.amount 
+                            ? Number(deposit.amount).toFixed(2) 
+                            : 0.00} $
             </Text>
         </>
     );

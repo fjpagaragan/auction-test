@@ -1,10 +1,14 @@
-import { ItemApiParameters, ItemApiResponse } from "@item/response";
+import { CreateItemApiParameters, ItemApiParameters, ItemApiResponse } from "@item/response";
 import { Action, ActionCreator } from "redux";
 import { AjaxError } from "rxjs/ajax";
 
 export const GET_ITEMS = "GET_ITEMS";
 export const GET_ITEMS_SUCCESS = "GET_ITEMS_SUCCESS";
 export const GET_ITEMS_FAIL = "GET_ITEMS_FAIL";
+
+export const CREATE_ITEM = "CREATE_ITEM";
+export const CREATE_ITEM_SUCCESS = "CREATE_ITEM_SUCCESS";
+export const CREATE_ITEM_FAIL = "CREATE_ITEM_FAIL";
 
 export const CLEAR_ITEMS = "CLEAR_ITEMS";
 
@@ -13,6 +17,11 @@ export type ItemsActions =
     | GetItemsSuccessAction
     | GetItemsFailAction
     | ClearItemsAction
+
+export type CreateItemActions =
+    | CreateItemAction
+    | CreateItemSuccessAction
+    | CreateItemFailAction
 
 export interface GetItemsAction extends Action {
     type: typeof GET_ITEMS;
@@ -28,6 +37,21 @@ export interface GetItemsFailAction extends Action {
     type: typeof GET_ITEMS_FAIL;
     payload: AjaxError;
 };
+
+export interface CreateItemAction extends Action {
+    type: typeof CREATE_ITEM;
+    payload: CreateItemApiParameters;
+};
+
+export interface CreateItemSuccessAction extends Action {
+    type: typeof CREATE_ITEM_SUCCESS;
+    payload: ItemApiResponse;
+};
+
+export interface CreateItemFailAction extends Action {
+    type: typeof CREATE_ITEM_FAIL;
+    payload: AjaxError;
+}
 
 export interface ClearItemsAction extends Action {
     type: typeof CLEAR_ITEMS;
@@ -52,6 +76,27 @@ export const GetItemsFail: ActionCreator<GetItemsFailAction> = (
 ) => ({
     type: GET_ITEMS_FAIL,
     payload,
+});
+
+export const CreateItem: ActionCreator<CreateItemAction> = (
+    payload: CreateItemApiParameters,
+) => ({
+    type: CREATE_ITEM,
+    payload
+});
+
+export const CreateItemSuccess: ActionCreator<CreateItemSuccessAction> = (
+    payload: ItemApiResponse,
+) => ({
+    type: CREATE_ITEM_SUCCESS,
+    payload,
+});
+
+export const CreateItemFail: ActionCreator<CreateItemFailAction> = (
+    payload: AjaxError,
+) => ({
+    type: CREATE_ITEM_FAIL,
+    payload
 });
 
 export const ClearItems: ActionCreator<ClearItemsAction> = () => ({

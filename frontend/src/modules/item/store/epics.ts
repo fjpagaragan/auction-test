@@ -2,19 +2,29 @@ import { of } from "rxjs";
 import { filter, switchMap, map, catchError } from "rxjs/operators";
 
 import { State, Epic } from "./";
-import { ItemsState } from "@item/reducers";
+import { CreateItemState, ItemsState } from "@item/reducers";
 import { 
+    CREATE_ITEM,
+    CreateItemAction,
+    CreateItemFail,
+    CreateItemSuccess,
     GET_ITEMS, 
     GetItemsAction, 
     GetItemsFail, 
     GetItemsSuccess
 } from "@item/actions";
-import { getItems } from "@item/api/item-api";
+import { 
+    createItem, 
+    getItems 
+} from "@item/api/item-api";
 
 
 
 export const selectItems = (state: State): ItemsState | undefined =>
     state.items;
+
+export const selectCreateItem = (state: State): CreateItemState | undefined =>
+    state.createItem;
 
 export const getItemsEpic: Epic = (actions$) => {
     return actions$.pipe(
@@ -27,5 +37,19 @@ export const getItemsEpic: Epic = (actions$) => {
                 catchError((error) => of(GetItemsFail(error))),
             ),
         ),
+    );
+}
+
+export const createItemEpic: Epic = (action$) => {
+    return action$.pipe(
+        filter(
+            (action): action is CreateItemAction => action.type === CREATE_ITEM,
+        ),
+        switchMap(({ payload }) =>
+            createItem(payload).pipe(
+                map((response) => CreateItemSuccess(response)),
+                catchError((error) => of(CreateItemFail(error))),
+            ),  
+        ),  
     );
 }

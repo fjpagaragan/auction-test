@@ -1,20 +1,30 @@
 import { FC, useEffect, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { isUndefined } from "lodash";
 
-import { Box, Button, Flex, HStack, IconButton, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
+import { 
+    Box, 
+    Button, 
+    HStack, 
+    IconButton, 
+    Tab, 
+    TabList, 
+    TabPanel, 
+    TabPanels, 
+    Tabs 
+} from "@chakra-ui/react";
 import { RiAuctionLine } from "react-icons/ri";
 import DataTable from 'react-data-table-component';
 
 import { useReducer } from "@hooks/useReducer";
-import { selectItems } from "@item/epics";
 import { useItems } from "@item/hooks/useItems";
 import { itemsReducer } from "@item/reducers";
 import { formatItems } from "@item/transformers";
 import { Item } from "@item/views";
 import { ItemCompletedColumns, ItemOngoingColumns } from "@item/utils/header-columns";
 import { GetItems } from "@item/actions";
+import CreateItemModal from "./CreateItemModal";
 
 
 
@@ -29,6 +39,8 @@ const Item: FC = () => {
     const [pending, setPending] = useState(true);
     const [itemStatus, setItemStatus] = useState("ongoing");
 
+    const [isOpenItemModal, setIsOpenItemModal] = useState(false);
+
 
     useReducer("getItems", itemsReducer);
 
@@ -39,6 +51,10 @@ const Item: FC = () => {
     const changeTableHandler = (status: string) => {
         dispatch(GetItems({ status }));
         setItemStatus(status);
+    }
+
+    const toggleItemModal = () => {
+        setIsOpenItemModal(!isOpenItemModal);
     }
 
     useEffect(() => {
@@ -83,9 +99,12 @@ const Item: FC = () => {
 
     return (
         <>
-            <Box as="section" pb={{ base: 'flex', md: '5'}}>
                 <HStack justifyContent={{ base: 'space-between', md: 'flex-end' }}>
-                    <Button colorScheme="teal">Create Item</Button>
+                    <Button onClick={toggleItemModal} colorScheme="teal">Create Item</Button>
+                    <CreateItemModal 
+                        isOpenItemModal={isOpenItemModal} 
+                        onToggleItemModal={toggleItemModal}            
+                    />
                     <Button colorScheme="teal" variant={"outline"}>Make Desposit</Button>
                 </HStack>
                 <Tabs variant='soft-rounded' colorScheme='green'>
@@ -114,7 +133,6 @@ const Item: FC = () => {
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
-            </Box>
         </>
     );
 };

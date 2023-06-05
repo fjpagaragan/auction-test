@@ -1,7 +1,17 @@
 import { ItemApiResponse } from "@item/response";
 import { AjaxStateObject } from "@utils/ajax-util";
 import { Reducer } from "redux";
-import { CLEAR_ITEMS, GET_ITEMS, GET_ITEMS_FAIL, GET_ITEMS_SUCCESS, ItemsActions } from "./actions";
+import { 
+    CLEAR_ITEMS, 
+    CREATE_ITEM, 
+    CREATE_ITEM_FAIL, 
+    CREATE_ITEM_SUCCESS, 
+    CreateItemActions, 
+    GET_ITEMS, 
+    GET_ITEMS_FAIL, 
+    GET_ITEMS_SUCCESS, 
+    ItemsActions 
+} from "@item/actions";
 
 
 
@@ -9,7 +19,14 @@ export interface ItemsState {
     items?: AjaxStateObject<ItemApiResponse[]>;
 };
 
-export const itemsReducer: Reducer<ItemsState, ItemsActions> = (
+export interface CreateItemState {
+    createItem?: AjaxStateObject<ItemApiResponse>;
+}
+
+export const itemsReducer: Reducer<
+    ItemsState, 
+    ItemsActions
+> = (
     state = {},
     action,
 ) => {
@@ -47,3 +64,42 @@ export const itemsReducer: Reducer<ItemsState, ItemsActions> = (
             return state;
     }
 };
+
+export const createItemReducer: Reducer<
+    CreateItemState, 
+    CreateItemActions
+> = (
+    state = {},
+    action,
+) => {
+    switch (action.type) {
+        case CREATE_ITEM:
+            return {
+                ...state,
+                createItem: {
+                    loading: true
+                }
+            };
+        
+        case CREATE_ITEM_SUCCESS:
+            return {
+                ...state,
+                createItem: {
+                    loading: false,
+                    success: action.payload,
+                }
+            };
+        
+        case CREATE_ITEM_FAIL:
+            return {
+                ...state,
+                createItem: {
+                    loading: false,
+                    error: action.payload,
+                }
+            };
+        
+        default:
+            return state;
+    }
+}

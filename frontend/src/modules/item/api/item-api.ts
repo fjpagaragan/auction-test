@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { ItemApiParameters, ItemApiResponse } from "@item/response";
+import { CreateItemApiParameters, ItemApiParameters, ItemApiResponse } from "@item/response";
 import { ajaxGet } from "@utils/ajax-util";
 import { ITEM_API } from "@utils/api/api-url";
 
@@ -16,5 +16,19 @@ export const getItems = (
 
     return ajaxGet<ItemApiResponse[]>({ url, params }).pipe(
         map((response) => response.response),
+    );
+};
+
+
+export const createItem = (
+    payload: CreateItemApiParameters,
+): Observable<ItemApiResponse> => {
+    const url = ITEM_API;
+    const params = {
+        ...payload
+    };
+
+    return ajaxGet<ItemApiResponse>({ url, params }).pipe(
+        map((response) => response.response)
     );
 }

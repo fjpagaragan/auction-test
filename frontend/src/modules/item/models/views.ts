@@ -13,3 +13,15 @@ export type ItemTableRow = {
     duration: string;
     actions: ReactElement;
 }
+
+export interface CreateItemFormProps {
+    name: string;
+    start_price: number | null;
+    duration: number | null;
+}
+
+export const createItemFormInitialValues: CreateItemFormProps = {
+    name: "",
+    start_price: null,
+    duration: null,
+}

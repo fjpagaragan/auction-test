@@ -1,6 +1,6 @@
 import type { Epic as _Epic } from "redux-observable";
-import { CreateItemActions, ItemsActions } from "./actions";
-import { CreateItemState, ItemsState } from "./reducers";
+import { CreateItemActions, ItemsActions } from "@item/actions";
+import { CreateItemState, ItemsState } from "@item/reducers";
 
 
 export interface State {

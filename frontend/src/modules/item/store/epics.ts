@@ -1,7 +1,7 @@
 import { of } from "rxjs";
 import { filter, switchMap, map, catchError } from "rxjs/operators";
 
-import { State, Epic } from "./";
+import { State, Epic } from "@item/store";
 import { CreateItemState, ItemsState } from "@item/reducers";
 import { 
     CREATE_ITEM,

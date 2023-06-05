@@ -9,7 +9,7 @@ import { selectAuthenticateUser } from "@login/epics";
 import { isUndefined } from "lodash";
 
 
-export const useItems = (): ItemsState["items"] => {
+export const useItems = (status: string): ItemsState["items"] => {
     const dispatch = useDispatch();
 
     // const user = useSelector(selectAuthenticateUser)?.authenicateUser?.success?.user;
@@ -23,9 +23,9 @@ export const useItems = (): ItemsState["items"] => {
     //     };
         
     // }, []);
-
+    
     useEffect(() => {
-        dispatch(GetItems({ status: "ongoing" }));
+        dispatch(GetItems({ status }));
     }, []);
     
     return itemsState;

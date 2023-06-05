@@ -31,9 +31,9 @@ const MyApp = ({
     return (
         <ChakraProvider>
             <Provider store={store}>
-                <AlertComponent />
                 <CSSReset />
                 {showSidebarAndHeader && <NavBar />}
+                <AlertComponent />
                 <Box maxW="container.xl" mx="auto" p={4}>
                 <Component {...pageProps} />
                 </Box>

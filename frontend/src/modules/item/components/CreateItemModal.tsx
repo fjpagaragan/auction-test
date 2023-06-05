@@ -1,6 +1,18 @@
 import { SetAlert } from "@alert/actions";
 import { DEFAULT_TIMEOUT } from "@alert/utils/constants";
-import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormControl, FormErrorMessage, Input, Modal, ModalBody, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react";
+import { 
+    Button, 
+    Drawer, 
+    DrawerBody, 
+    DrawerCloseButton, 
+    DrawerContent, 
+    DrawerFooter, 
+    DrawerHeader, 
+    DrawerOverlay, 
+    FormControl, 
+    FormErrorMessage, 
+    Input
+} from "@chakra-ui/react";
 import { useReducer } from "@hooks/useReducer";
 import { CreateItem, GetItems } from "@item/actions";
 import { selectCreateItem } from "@item/epics";
@@ -15,7 +27,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 type CreateItemModalProps = {
     isOpenItemDrawer: boolean;
-    setIsOpenItemDrawer: (inpit: boolean) => void;
+    setIsOpenItemDrawer: (input: boolean) => void;
 }
 
 const CreateItemModal: FC<CreateItemModalProps> = ({

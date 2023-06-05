@@ -27,6 +27,7 @@ import { DEFAULT_TIMEOUT } from "@alert/utils/constants";
 import { SetAlert } from "@alert/actions";
 import { GetItems } from "@item/actions";
 import { ApiErrorStatus } from "@utils/api/api-response";
+import { GetDeposit } from "@deposit/actions";
 
 type MakeBidDrawerProps = {
     isOpenBidDrawer: boolean;
@@ -79,6 +80,7 @@ const MakeBidDrawer: FC<MakeBidDrawerProps> = ({
                 timeout: DEFAULT_TIMEOUT,
             };
             dispatch(SetAlert(alertDetails));
+            dispatch(GetDeposit());
             dispatch(GetItems({ status: "ongoing" }));
             setSelectedItem(null);
             form.resetForm();
@@ -111,6 +113,9 @@ const MakeBidDrawer: FC<MakeBidDrawerProps> = ({
                 form.setSubmitting(false);
                 dispatch(SetAlert(errorAlertDetails));
             }
+
+            setSelectedItem(null);
+            form.resetForm();
         }
     }, [makeBidState]);
 

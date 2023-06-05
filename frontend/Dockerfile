@@ -16,4 +16,4 @@ RUN npm install -g concurrently
 RUN npx tailwindcss -i ./src/styles/tailwind_input.css o ./src/styles/style.css
 RUN npx next build
 
-CMD npm run next:dev
+CMD npx next start

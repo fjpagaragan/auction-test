@@ -1,0 +1,294 @@
+[33mcommit d7bcea5699316e3f1d0edca3e3ca8a3d768ce5a3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/feature/feature-1-1[m[33m, [m[1;31morigin/feature/featrue-1[m[33m, [m[1;32mfeature/feature-1-1[m[33m, [m[1;32mfeature/featrue-1[m[33m)[m
+Author: fpagaragan <fpagaragan@consoleconnect.com>
+Date:   Wed Oct 9 08:58:48 2024 +0800
+
+    feat: feature 1 page
+
+[33mcommit 0a1ba05476cbc91b8b0da98c9feb496fdfcd2f19[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Wed Oct 9 06:42:27 2024 +0800
+
+    Update CODEOWNERS
+
+[33mcommit e4db3a0a7ac96aa0f63d2a2f612e8fd4b1d2de08[m
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Wed Oct 9 06:41:34 2024 +0800
+
+    Create CODEOWNERS
+
+[33mcommit 9d0daac2a61252860fbcc382bedfe27394764414[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Tue Jun 6 02:20:55 2023 +0800
+
+    [test] make sample unit test
+
+[33mcommit f7462d422694c72666bdad333a01643417dcfe46[m
+Merge: 00a2898 a98881a
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Tue Jun 6 00:50:13 2023 +0800
+
+    Merge pull request #10 from fjpagaragan/feature/frontend-bid
+    
+    Feature/frontend bid
+
+[33mcommit a98881aa5854bfebb87f3530d079cbf6002cb23c[m[33m ([m[1;31morigin/feature/frontend-bid[m[33m)[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Tue Jun 6 00:49:39 2023 +0800
+
+    Add readme.me
+
+[33mcommit bebb67778a6803fea24774658785fb861b501674[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon Jun 5 15:35:50 2023 +0800
+
+    [frontend] completed make bid
+
+[33mcommit 00a2898715573f8c7a70ed671c244be440175e22[m
+Merge: acadcd2 aa08a68
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Mon Jun 5 13:30:02 2023 +0800
+
+    Merge pull request #9 from fjpagaragan/feature/frontend-deposit
+    
+    [frontend] completed make balance
+
+[33mcommit aa08a68a2e0421102ba5f2752f76d3ef2ce186fe[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon Jun 5 13:29:34 2023 +0800
+
+    [frontend] completed make balance
+
+[33mcommit acadcd2ea98383729ca8b356f4baec8bd7c40a53[m
+Merge: 79f7335 34218b1
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Mon Jun 5 11:21:20 2023 +0800
+
+    Merge pull request #8 from fjpagaragan/feature/frontend-item
+    
+    [frontend] create items and display deposit balance
+
+[33mcommit 34218b1fa3149e6052aa978efb03ab15e6102f24[m[33m ([m[1;31morigin/feature/frontend-item[m[33m)[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon Jun 5 11:20:30 2023 +0800
+
+    [frontend] display deposit
+
+[33mcommit a7fc97fefb50f25932e68735ff5be176e77155cb[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon Jun 5 10:22:23 2023 +0800
+
+    [frontend] completed create item
+
+[33mcommit 57866cd133924aa22a29e11aa7b2fe2dfae46394[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon Jun 5 09:51:32 2023 +0800
+
+    [frontend] create item store utils
+
+[33mcommit 91bc4d557c614870d618ac31934c32460f2e0026[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon Jun 5 08:27:36 2023 +0800
+
+    [frontend] items
+
+[33mcommit 1000e0135caf0d5713eb1b73c7bf5fdfcdc93f4c[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon Jun 5 01:48:11 2023 +0800
+
+    [frontend] list items
+
+[33mcommit 5580917071ad8982efc777a0ead2ed8930890e91[m
+Merge: e1652c7 79f7335
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sun Jun 4 17:18:58 2023 +0800
+
+    Merge branch 'main' of github.com:fjpagaragan/auction-test into main
+
+[33mcommit e1652c7138d9b6333df4c8754c0ef8e47795be80[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sun Jun 4 17:18:53 2023 +0800
+
+    styles
+
+[33mcommit 79f7335ac4177702cf698e73de409f0bebf88ca2[m
+Merge: 60ad94d 25a8a4b
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Sun Jun 4 17:18:17 2023 +0800
+
+    Merge pull request #7 from fjpagaragan/feature/frontend-login
+    
+    [frontend] login
+
+[33mcommit 25a8a4b8bafb852dd634e88adbb99a7ae193b7cd[m[33m ([m[1;31morigin/feature/frontend-login[m[33m)[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sun Jun 4 17:17:35 2023 +0800
+
+    [frontend] create initial item page and fix navbar
+
+[33mcommit 5fbb2f10c357a8e8a2289893fed55ad7830febfb[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sun Jun 4 15:53:57 2023 +0800
+
+    [authenticate] fix bycrypt logic
+
+[33mcommit 508a1e90b4bdd61303cb9c02c921242830885e04[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sun Jun 4 15:41:05 2023 +0800
+
+    [frontend] fix authentication
+
+[33mcommit 0f0a818699d55c448f2fa1d266b0681c28a6ba9e[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sun Jun 4 15:30:26 2023 +0800
+
+    [frontend] complete login
+
+[33mcommit 99d974fa0edb6874718fc8ab81cc7a35bfaf9988[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sun Jun 4 03:00:12 2023 +0800
+
+    [frontend] login store utils
+
+[33mcommit ef91133afef3bcd8acbd7f27ee3cb07d134beda1[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sun Jun 4 01:34:35 2023 +0800
+
+    [frontend] setup ajax-util
+
+[33mcommit 69458fa3b50fd668f1577960829a6e5fc3cb89fd[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sat Jun 3 22:28:36 2023 +0800
+
+    [frontend] login handlers
+
+[33mcommit 60ad94da7f3d27eb016ba0c9b40da088e2bafed5[m
+Merge: 548a01b 8ba454a
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Sat Jun 3 17:59:31 2023 +0800
+
+    Merge pull request #6 from fjpagaragan/feature/initial-frontend
+    
+    [frontend] initial frontend for login
+
+[33mcommit 8ba454a14df523ec54040c615c454a0508824221[m[33m ([m[1;31morigin/feature/initial-frontend[m[33m)[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sat Jun 3 17:58:22 2023 +0800
+
+    [frontend] initial loging
+
+[33mcommit ec1608ed44d24c31b77b3e56981cb5c503614538[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sat Jun 3 01:49:32 2023 +0800
+
+    [frontend] add auth
+
+[33mcommit 73cc70ff196df8225b6b2567f444d3b55e5f3ac3[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Sat Jun 3 01:36:33 2023 +0800
+
+    [frontend] initial setup
+
+[33mcommit 548a01b754800a8324bbbad914661314490c4e6f[m
+Merge: 208abeb 9f8c6ef
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Fri Jun 2 23:40:12 2023 +0800
+
+    Merge pull request #5 from fjpagaragan/feature/bids
+    
+    [BACKEND] bids api
+
+[33mcommit 9f8c6ef6fa532490cfecc45b824160167daf920a[m[33m ([m[1;31morigin/feature/bids[m[33m)[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Fri Jun 2 23:38:45 2023 +0800
+
+    [backend] bids api and functionality
+
+[33mcommit a8e4ae31f700d03d93151d2df81204ce678f59e1[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Wed May 24 19:34:43 2023 +0800
+
+    (feat) wip bid functionality
+
+[33mcommit 208abebcfc7873a722b38601f66ffec5fa3d266a[m
+Merge: f168ce3 3ca5633
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Wed May 24 09:34:04 2023 +0800
+
+    Merge pull request #4 from fjpagaragan/feature/deposit
+    
+    (feat) complete deposit backend
+
+[33mcommit 3ca56335e5abbcfa1de8d6da33402db82b13db96[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Wed May 24 09:33:33 2023 +0800
+
+    (feat) complete deposit backend
+
+[33mcommit f168ce3b6900218a01aa98bf70bdcfe0fa8c8ef8[m
+Merge: 1ef50d0 5c69783
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Mon May 22 18:30:07 2023 +0800
+
+    Merge pull request #3 from fjpagaragan/feature/item
+    
+    Feature/item
+
+[33mcommit 5c69783f7a5c4d907668c3ff615d81595793c09b[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon May 22 18:29:00 2023 +0800
+
+    (feat) complete item functionality
+
+[33mcommit f9259dfc76bd62da541a047d1c0099624d8a8830[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon May 22 16:44:14 2023 +0800
+
+    (feat) list ongoing bids'
+
+[33mcommit fa6b8479de2ac95f3e44858ca516d58e9ee39a67[m
+Author: Francis Pagaragan <fjpagaragan@gmail.com>
+Date:   Mon May 22 15:56:38 2023 +0800
+
+    (feat) create item and middleware auth
+
+[33mcommit 1ef50d0beb4a1c597f38120c07bea9145496178a[m
+Merge: fae02ce 55f08a7
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Mon May 22 13:14:29 2023 +0800
+
+    Merge pull request #2 from fjpagaragan/feature/auth-login
+    
+    Feature/auth login
+
+[33mcommit 55f08a703ec02ade3a0791ad9104b01b38cbb331[m
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Mon May 22 12:54:20 2023 +0800
+
+    (feat) authenticate
+
+[33mcommit 96e36782ea34fb83a8a718a7446e282e532436c6[m
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Mon May 22 04:17:06 2023 +0800
+
+    (feat) create user
+
+[33mcommit fae02cebcca2e5c5093ee31eb0ca9ffce879253f[m
+Merge: 12079f2 3dca2d7
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Sun May 21 17:36:54 2023 +0800
+
+    Merge pull request #1 from fjpagaragan/feature/docker-setup
+    
+    (feat) docker setup for backend
+
+[33mcommit 3dca2d7e4554b594885154df6024b1f3469ebc6e[m
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Sun May 21 17:36:02 2023 +0800
+
+    (feat) docker setup for backend
+
+[33mcommit 12079f2cb7b9dedd32807c371a2e05f19e8cda42[m
+Author: Francis <fjpagaragan@gmail.com>
+Date:   Sun May 21 16:57:49 2023 +0800
+
+    (initial) backend setup

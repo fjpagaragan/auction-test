@@ -1,5 +1,5 @@
 # Autcion Test
-A test project for Jitera
+A technical test project for certain company
 
 ## Tech Stack
 
